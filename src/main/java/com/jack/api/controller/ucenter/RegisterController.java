@@ -1,5 +1,6 @@
 package com.jack.api.controller.ucenter;
 
+import com.jack.api.common.request.ucenter.ModifyPasswordReq;
 import com.jack.api.common.request.ucenter.RegisterReq;
 import com.jack.api.common.utils.BeanCopyUtil;
 import com.jack.api.common.utils.Result;
@@ -22,6 +23,12 @@ public class RegisterController {
     public Result<Boolean> register(@RequestBody @Valid RegisterReq req){
         User user = BeanCopyUtil.copyProperties(req, User::new);
         boolean isSuccess = registerService.saveTo(user);
+        return new Result<>(isSuccess);
+    }
+
+    @PostMapping("/modifyPassword")
+    public Result<Boolean> modifyPassword(@RequestBody @Valid ModifyPasswordReq req){
+        boolean isSuccess = registerService.modifyPassword(req);
         return new Result<>(isSuccess);
     }
 }
