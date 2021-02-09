@@ -1,9 +1,9 @@
-package com.jack.api.controller;
+package com.jack.api.controller.api;
 
 import com.jack.api.common.response.ResponseSimpleRes;
 import com.jack.api.common.utils.Result;
 import com.jack.api.dao.entity.OperateLog;
-import com.jack.api.service.QueryReq;
+import com.jack.api.service.api.QueryReq;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

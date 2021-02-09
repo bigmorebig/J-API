@@ -1,12 +1,12 @@
-package com.jack.api.service.impl;
+package com.jack.api.service.api.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.jack.api.common.constant.FormatterDateTime;
-import com.jack.api.common.request.GetReqObj;
+import com.jack.api.common.request.api.GetReqObj;
 import com.jack.api.common.response.ResponseRes;
 import com.jack.api.dao.entity.OperateLog;
 import com.jack.api.dao.mapper.OperateLogMapper;
-import com.jack.api.service.GetService;
+import com.jack.api.service.api.GetService;
 import io.restassured.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.jack.api.service;
+package com.jack.api.service.api;
 
 import com.jack.api.common.response.ResponseSimpleRes;
 import com.jack.api.dao.entity.OperateLog;

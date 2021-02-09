@@ -1,11 +1,11 @@
-package com.jack.api.service.impl;
+package com.jack.api.service.api.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jack.api.common.response.ResponseSimpleRes;
 import com.jack.api.common.utils.BeanCopyUtil;
 import com.jack.api.dao.entity.OperateLog;
 import com.jack.api.dao.mapper.OperateLogMapper;
-import com.jack.api.service.QueryReq;
+import com.jack.api.service.api.QueryReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

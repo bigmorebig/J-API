@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Aspect
 public class ServicePointCut {
-    @Pointcut("execution(* com.jack.api.service.impl.*.*(..))")
+    @Pointcut("execution(* com.jack.api.service.api.impl.*.*(..))")
     public void pointcut(){
     }
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.net.ConnectException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ public class WebExceptionHandler {
 //            data.put()
         }
         log.error("公共异常: ", ex);
+        ex.printStackTrace();
         return ApiUtil.genErrorResult(-1, ex.getMessage());
     }
 
@@ -39,17 +41,8 @@ public class WebExceptionHandler {
     @ExceptionHandler(value = IllegalArgumentException.class)
     public Result<Object> assertGateWayExceptionHandler(IllegalArgumentException e){
         log.error("参数异常: {}", e.getMessage());
+        e.printStackTrace();
         return ApiUtil.genErrorResult(-1, "参数错误");
-    }
-
-    /**
-     * 全局异常
-     */
-    @ResponseBody
-    @ExceptionHandler(value = RuntimeException.class)
-    public Result<Object> errorHandler(RuntimeException e){
-        log.error("未知异常: {}", e.getMessage());
-        return ApiUtil.genErrorResult(-1, "系统异常");
     }
 
     /**
@@ -59,7 +52,30 @@ public class WebExceptionHandler {
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public Result<Object> bindingErrorHandler(MethodArgumentNotValidException e){
         log.error("参数校验失败: {}", e.getBindingResult().getAllErrors());
+        e.printStackTrace();
         List<ObjectError> errors = e.getBindingResult().getAllErrors();
         return ApiUtil.genErrorResult(CommonCode.PARAM_ERROR.getCode(), errors.get(0).getDefaultMessage());
+    }
+
+    /**
+     * 网络连接异常
+     */
+    @ResponseBody
+    @ExceptionHandler(value = ConnectException.class)
+    public Result<Object> connectErrorHandler(ConnectException e){
+        log.error("网络连接失败失败: {}", e.getCause().toString());
+        e.printStackTrace();
+        return ApiUtil.genErrorResult(CommonCode.CONNECT_ERROR.getCode(), "网络连接失败");
+    }
+
+    /**
+     * 全局异常
+     */
+    @ResponseBody
+    @ExceptionHandler(value = Exception.class)
+    public Result<Object> errorHandler(Exception e){
+        log.error(e.getCause().toString());
+        e.printStackTrace();
+        return ApiUtil.genErrorResult(-1, "系统异常");
     }
 }

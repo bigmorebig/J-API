@@ -40,6 +40,11 @@ public enum CommonCode {
     PARAM_ERROR(600, "Param Error"),
 
     /**
+     * 网络连接错误
+     */
+    CONNECT_ERROR(601, "Connect Error"),
+
+    /**
      * 解密失败
      */
     PRECONDITION_FAILED(601, "param decrypt failed");

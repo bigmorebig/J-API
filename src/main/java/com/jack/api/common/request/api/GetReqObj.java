@@ -1,4 +1,4 @@
-package com.jack.api.common.request;
+package com.jack.api.common.request.api;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
