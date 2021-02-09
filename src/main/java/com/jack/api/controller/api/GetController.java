@@ -2,7 +2,9 @@ package com.jack.api.controller.api;
 
 import com.jack.api.common.request.api.GetReqObj;
 import com.jack.api.common.response.ResponseRes;
+import com.jack.api.common.utils.BeanCopyUtil;
 import com.jack.api.common.utils.Result;
+import com.jack.api.dao.entity.OperateLog;
 import com.jack.api.service.api.GetService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,7 +27,8 @@ public class GetController {
     @ResponseBody
     @ApiOperation("get请求接口")
     public Result<Object> getNoParams(@RequestBody @Valid GetReqObj params){
-        ResponseRes response = getService.doGet(params);
+        OperateLog operateLog = BeanCopyUtil.copyProperties(params, OperateLog::new);
+        ResponseRes response = getService.doGet(operateLog);
         return new Result<>(response);
     }
 }

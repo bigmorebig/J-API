@@ -47,7 +47,12 @@ public enum CommonCode {
     /**
      * 解密失败
      */
-    PRECONDITION_FAILED(601, "param decrypt failed");
+    PRECONDITION_FAILED(601, "param decrypt failed"),
+
+    /**
+     * 代理失败
+     */
+    PROXY_FAILED(700, "proxy failed");
 
     private final int code;
     private final String message;

@@ -1,6 +1,7 @@
 package com.jack.api.service.api.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.jack.api.common.constant.FormatterDateTime;
 import com.jack.api.common.request.api.GetReqObj;
 import com.jack.api.common.response.ResponseRes;
@@ -21,11 +22,11 @@ public class GetServiceImpl implements GetService {
     @Autowired
     private OperateLogMapper operateLogMapper;
 
-    public ResponseRes doGet(GetReqObj params) {
+    public ResponseRes doGet(OperateLog params) {
         // 执行请求
         Response response = given().
-                params(params.getParams()).
-                headers(params.getHeaders()).
+                params(JSON.parseObject(params.getParams())).
+                headers(JSON.parseObject(params.getHeaders())).
                 get(params.getUrl());
 
         // 记录日志
