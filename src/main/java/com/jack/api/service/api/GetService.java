@@ -5,5 +5,5 @@ import com.jack.api.common.response.ResponseRes;
 import com.jack.api.dao.entity.OperateLog;
 
 public interface GetService {
-    ResponseRes doGet(GetReqObj params);
+    ResponseRes doGet(OperateLog params);
 }

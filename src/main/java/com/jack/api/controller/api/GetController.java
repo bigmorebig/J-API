@@ -27,7 +27,8 @@ public class GetController {
     @ResponseBody
     @ApiOperation("get请求接口")
     public Result<Object> getNoParams(@RequestBody @Valid GetReqObj params){
-        ResponseRes response = getService.doGet(params);
+        OperateLog operateLog = BeanCopyUtil.copyProperties(params, OperateLog::new);
+        ResponseRes response = getService.doGet(operateLog);
         return new Result<>(response);
     }
 }

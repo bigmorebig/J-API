@@ -22,11 +22,11 @@ public class GetServiceImpl implements GetService {
     @Autowired
     private OperateLogMapper operateLogMapper;
 
-    public ResponseRes doGet(GetReqObj params) {
+    public ResponseRes doGet(OperateLog params) {
         // 执行请求
         Response response = given().
-                params(params.getParams()).
-                headers(params.getHeaders()).
+                params(JSON.parseObject(params.getParams())).
+                headers(JSON.parseObject(params.getHeaders())).
                 get(params.getUrl());
 
         // 记录日志
